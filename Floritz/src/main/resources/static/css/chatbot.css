@@ -1,0 +1,116 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+input.answer {
+	margin-left: 20px;
+    }
+
+/* page-loading */
+    #loading {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      position: fixed;
+      display: block;
+      opacity: 0.6;
+      background: #e4e4e4;
+      z-index: 99;
+      text-align: center;
+    }
+
+    #loading>img {
+      position: absolute;
+      top: 40%;
+      left: 45%;
+      z-index: 100;
+    }
+
+    #loading>p {
+      position: absolute;
+      top: 57%;
+      left: 43%;
+      z-index: 101;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+#chat-container {
+	padding-top: 50px;
+    width: 700px;
+    height: 1000px; 
+    margin: 0 auto;
+}
+
+#chat-box {
+    width: 700px;
+    height: 800px; /* 최대 높이 설정 */
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+#result pre {
+    margin: 0;
+    white-space: pre-wrap; /* 긴 문장을 줄 바꿈 처리 */
+    font-size: 16px; /* 원하는 글자 크기로 조정 */
+    font-family: 'Source Sans Pro', Arial, sans-serif !important;
+}
+
+form {
+    display: flex;
+    margin-top: 10px;
+    
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 8px;
+}
+
+input[type="button"] {
+    padding: 8px 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#loading {
+    display: none;
+    color: #888;
+}
+
+  .message {
+        margin-bottom: 10px;
+        clear: both;
+        overflow: hidden;
+        font-family: 'Source Sans Pro', Arial, sans-serif !important;
+    }
+
+    .user-message {
+        float: right;
+        background-color: #4caf50;
+        color: white;
+        border-radius: 15px;
+        padding: 10px;
+    }
+/* 챗봇 응답 메시지 스타일 */
+.chat-result pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+.bot-message {
+    float: left;
+    background-color: #ddd;
+    border-radius: 15px;
+    padding: 10px;
+    padding-top: 0xp;
+    font-family: 'Source Sans Pro', Arial, sans-serif !important;
+    /* 여기에 원하는 다른 스타일도 추가할 수 있습니다. */
+}
+  

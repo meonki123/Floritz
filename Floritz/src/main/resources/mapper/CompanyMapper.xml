@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mapper.CompanyMapper">
+
+	<insert id="companyInsert">
+		INSERT INTO COMPANY (
+		ID,
+		PASSWORD,
+		COMPANY_NAME,
+		COMPANY_NUMBER,
+		COMPANY_ADDRESS,
+		EMAIL,
+		PHONE
+		) VALUES (
+		#{id},
+		#{companyPassword},
+		#{companyName},
+		#{companyNumber},
+		#{companyAddress},
+		#{email},
+		#{phone}
+		)
+	</insert>
+
+    <!-- COMPANYDETAIL 테이블에 레코드를 삽입하는 쿼리를 추가합니다. -->
+    <insert id="insertCompanyDetail">
+        INSERT INTO COMPANYDETAIL (
+        COMPANYID
+        ) VALUES (
+        #{id}
+        )
+    </insert>
+
+	<select id="companyLogin" resultType="com.board.login.CompanyVO">
+		SELECT *
+		FROM COMPANY
+		WHERE ID = #{id}
+		AND PASSWORD = #{companyPassword}
+	</select>
+
+
+	<!-- 사용자 정보를 가져오는 쿼리 -->
+	<select id="findById" resultType="com.board.login.CompanyVO">
+	SELECT C.ID as id,
+	C.PASSWORD as companyPassword,
+	C.COMPANY_NAME as companyName,
+	C.COMPANY_NUMBER as companyNumber,
+	C.COMPANY_ADDRESS as companyAddress,
+	C.EMAIL as email,
+	C.PHONE as phone,
+	D.EXTERIORIMAGE as exteriorImagePath,
+	D.INTERIORIMAGE as interiorImagePath,
+	D.DESCRIPTION as description,  <!-- 사업장 설명 추가 -->
+	D.CLOSEDDAYS as closedDays,  <!-- 휴무일 추가 -->
+	D.BREAKTIME as breakTime  <!-- 브레이크 타임 추가 -->
+	FROM COMPANY C
+	LEFT JOIN COMPANYDETAIL D ON C.ID = D.COMPANYID
+	WHERE C.ID = #{id}
+</select>
+
+
+	<!-- 사용자 정보를 업데이트하는 쿼리 -->
+	<update id="updateCompany">
+    UPDATE COMPANY
+    SET
+    <if test="company.companyPassword != null and company.companyPassword != ''">
+        PASSWORD = #{company.companyPassword,jdbcType=VARCHAR},
+    </if>
+    COMPANY_NAME = #{company.companyName, jdbcType=VARCHAR},
+    COMPANY_NUMBER = #{company.companyNumber, jdbcType=VARCHAR},
+    COMPANY_ADDRESS = #{company.companyAddress, jdbcType=VARCHAR},
+    EMAIL = #{company.email, jdbcType=VARCHAR},
+    PHONE = #{company.phone, jdbcType=VARCHAR}
+    WHERE ID = #{company.id}
+</update>
+
+
+
+    <update id="updateCompanyDetail">
+        UPDATE COMPANYDETAIL
+        SET
+        EXTERIORIMAGE = #{company.exteriorImagePath, jdbcType=VARCHAR},
+        INTERIORIMAGE = #{company.interiorImagePath, jdbcType=VARCHAR},
+        DESCRIPTION = #{company.description, jdbcType=CLOB},
+        CLOSEDDAYS = #{company.closedDays, jdbcType=VARCHAR},
+        BREAKTIME = #{company.breakTime, jdbcType=VARCHAR}
+        WHERE COMPANYID = #{company.id}
+    </update>
+
+</mapper>

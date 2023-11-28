@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.board.mapper.BoardMapper">
+
+	<!-- 단체 예약 목록 -->
+    <select id="getBoard" 
+    		resultType="com.board.login.CompanyVO">
+	    SELECT 		ID              AS id,
+	    			COMPANY_NAME AS companyName, 
+	    		    phone, COMPANY_ADDRESS AS companyAddress
+		FROM 		COMPANY
+		ORDER BY    COMPANY_NAME ASC
+    </select>
+
+    <!-- 상세보기 -->
+	    <select id="viewBoard" 
+	            resultType="com.board.login.CompanyVO">
+	        SELECT    ID              AS id, 
+	           		  COMPANY_NAME 	  AS companyName,
+	           		  COMPANY_ADDRESS AS companyAddress,
+	           		  phone
+	        FROM      COMPANY
+	        WHERE     ID = #{id} 
+	    </select>
+    
+    <select id="orderBoard" 
+    		parameterType="com.board.login.CompanyVO"
+            resultType="com.board.login.CompanyVO">
+		SELECT    
+		    C.COMPANY_NAME AS companyName,
+		    C.COMPANY_NUMBER AS companyNumber,
+		    C.COMPANY_ADDRESS AS companyAddress,
+		    C.EMAIL,
+		    C.PHONE,
+		    CD.BREAKTIME AS breakTime,
+		    CD.CLOSEDDAYS AS closedDays
+		FROM COMPANY C
+		JOIN COMPANYDETAIL CD ON C.ID = CD.COMPANYID
+		WHERE C.ID = #{id}
+    </select>
+    
+	<select id="searchByCompanyName" resultType="com.board.login.CompanyVO">
+	    SELECT * 
+	    FROM COMPANY
+	    WHERE COMPANY_NAME AS companyName LIKE '%' || #{keyword} || '%'
+	</select>
+	
+	<select id="searchByCompanyAddress" resultType="com.board.login.CompanyVO">
+	    SELECT * 
+	    FROM COMPANY
+	    WHERE COMPANY_ADDRESS AS companyAddress LIKE '%' || #{keyword} || '%'
+	</select>
+    
+</mapper>

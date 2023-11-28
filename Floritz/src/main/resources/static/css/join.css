@@ -1,0 +1,65 @@
+.gradient-custom {
+  background: #6a11cb;
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+.card-body.p-5.text-center {
+    background-color: #212529;
+}
+.gradient-custom {
+  background: #6a11cb;
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+.card-body.p-5.text-center {
+    background-color: #212529;
+}
+
+.viewTermsStyle {
+    color: #03A8D8;
+    cursor: pointer;
+}
+
+.viewTermsStyle:hover {
+    text-decoration: underline;
+    color: #3996DD;
+}
+
+button.closeTermsStyle {
+    color: white;
+    background-color: #03A8D8;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.closeTermsStyle:hover {
+    background-color: darkblue;
+}
+
+#viewTerms {
+   color: #03A8D8;
+   cursor: pointer;
+}
+
+#viewTerms:hover {
+   text-decoration: underline;
+   color: #3996DD;
+}
+
+button#closeTerms {
+   color: white;
+   background-color: #03A8D8;
+   border: none;
+   padding: 10px;
+   cursor: pointer;
+   border-radius: 5px;
+}
+
+button#closeTerms:hover {
+   background-color: darkblue;
+}
+

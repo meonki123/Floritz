@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mapper.UserMapper">
+
+<insert id="userInsert">
+    INSERT INTO USERS (
+        ID,
+        PASSWORD,
+        NAME,
+        EMAIL,
+        PHONE
+    ) VALUES (
+        #{id},
+        #{password},
+        #{name},
+        #{email},
+        #{phone}
+    )
+</insert>
+  
+    <select id="userLogin" resultType="com.board.login.UserVo">
+        SELECT *
+        FROM USERS
+        WHERE ID = #{id} AND PASSWORD = #{password}
+    </select>
+
+    <!-- 사용자 정보를 가져오는 쿼리 -->
+    <select id="findById" resultType="com.board.login.UserVo">
+        SELECT *
+        FROM USERS
+        WHERE ID = #{id}
+    </select>
+    
+<!-- 사용자 정보를 업데이트하는 쿼리 -->
+<update id="update">
+    UPDATE USERS
+    SET
+        PASSWORD = #{password},
+        NAME = #{name},
+        EMAIL = #{email},
+        PHONE = #{phone}
+    WHERE ID = #{id}
+</update>
+
+    
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
