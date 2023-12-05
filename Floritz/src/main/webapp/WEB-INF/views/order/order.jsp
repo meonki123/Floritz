@@ -191,7 +191,7 @@ input[type="date"] {
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script>
         var IMP = window.IMP; 
-        IMP.init("imp45706873"); 
+        IMP.init(""); 
         
         function requestPay() {
             IMP.request_pay({
